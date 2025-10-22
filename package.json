@@ -1,16 +1,26 @@
 {
+  "homepage": "https://tamilmuhilan123.github.io/Weather-app",
   "name": "index",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "main": "index.js",
+  "engines":{
+     "node": "^20.17.0 || >=22.9.0"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d dist",
+    "host":"vite --host",
+    "start":"node index.js"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.1.4",
+    "gh-pages": "^6.3.0",
     "index": "file:",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
