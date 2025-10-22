@@ -113,6 +113,19 @@ const Myweather = () => {
     setCity("Chennai");
     setRegion("Tamil Nadu");
     setCountry("India");
+    function updateDate() {
+    const now = new Date();
+    const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+    setDay(days[now.getDay()]);
+    setDate(now.getDate());
+    setMonth(months[now.getMonth()]);
+    setYear(now.getFullYear());
+  }
+
+  updateDate();
+  const timer = setInterval(updateDate, 60 * 60 * 1000); // update every hour
+  return () => clearInterval(timer);
   }, []);
 
   return (
