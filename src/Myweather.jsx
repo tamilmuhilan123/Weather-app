@@ -74,11 +74,10 @@ const Myweather = () => {
         const cityName = data.location.name;
         const cityTemp = Math.floor(data.current.temp_c);
         setRecentCities((prev) => {
-          const filtered = [cityName, ...prev.filter((c) => c !== cityName)];
-            const updated = [{ name: cityName, temp: cityTemp }, ...filtered];
-          return updated.slice(0, 5);
+          const filtered = prev.filter((c) => c.name !== cityName);
+          const updated = [{ name: cityName, temp: cityTemp }, ...filtered];
+         return updated.slice(0, 5);
         });
-
         setCity(cityName);
         setRegion(data.location.region);
         setCountry(data.location.country);
