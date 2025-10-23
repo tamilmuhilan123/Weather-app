@@ -30,13 +30,6 @@ const Myweather = () => {
   const [humidity, setHumidity] = useState("");
   const [sunRise, setSunRise] = useState("7:50 am");
   const [sunSet, setSunSet] = useState("6:45 pm");
-  const [days1Temp, setDays1Temp] = useState("");
-  const [days2Temp, setDays2Temp] = useState("");
-  const [days3Temp, setDays3Temp] = useState("");
-  const [days4Temp, setDays4Temp] = useState("");
-  const [days5Temp, setDays5Temp] = useState("");
-  const [days6Temp, setDays6Temp] = useState("");
-  const [days7Temp, setDays7Temp] = useState("");
   const [loading, setLoading] = useState(false);
   const [cityNotFound, setCityNotFound] = useState(false);
   const [mainIcon, setMainIcon] = useState(stromIcon);
@@ -78,7 +71,7 @@ const Myweather = () => {
         setRecentCities((prev) => {
           const filtered = prev.filter((c) => c.name !== cityName);
           const updated = [{ name: cityName, temp: cityTemp, icon: cityIcon }, ...filtered];
-         return updated.slice(0, 5);
+          return updated.slice(0, 5);
         });
         setCity(cityName);
         setRegion(data.location.region);
@@ -96,48 +89,48 @@ const Myweather = () => {
         setSunSet(data.forecast.forecastday[0].astro.sunset);
         setMainIcon("https:" + data.current.condition.icon);
         const forecastArray = data.forecast.forecastday.slice(0, 7).map((dayData) => {
-        const date = new Date(dayData.date);
-        const options = { weekday: "short" };
-        const dayName = date.toLocaleDateString("en-US", options);
-        const localTimeStr = data.location.localtime; 
-        const localDate = new Date(localTimeStr.replace(" ", "T"));
-        const days = [
-          "Sunday",
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-        ];
-        const months = [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July",
-          "August",
-          "September",
-          "October",
-          "November",
-          "December",
-        ];
-        setDay(days[localDate.getDay()]);
-        setDate(localDate.getDate());
-        setMonth(months[localDate.getMonth()]);
-        setYear(localDate.getFullYear());
+          const date = new Date(dayData.date);
+          const options = { weekday: "short" };
+          const dayName = date.toLocaleDateString("en-US", options);
+          const localTimeStr = data.location.localtime;
+          const localDate = new Date(localTimeStr.replace(" ", "T"));
+          const days = [
+            "Sunday",
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+          ];
+          const months = [
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December",
+          ];
+          setDay(days[localDate.getDay()]);
+          setDate(localDate.getDate());
+          setMonth(months[localDate.getMonth()]);
+          setYear(localDate.getFullYear());
 
-       return {
-    name: dayName,
-    temp: Math.floor(dayData.day.maxtemp_c),
-    icon: "https:" + dayData.day.condition.icon,
-    condition: dayData.day.condition.text,
-  };
-});
+          return {
+            name: dayName,
+            temp: Math.floor(dayData.day.maxtemp_c),
+            icon: "https:" + dayData.day.condition.icon,
+            condition: dayData.day.condition.text,
+          };
+        });
 
-setForecastDays(forecastArray);
+        setForecastDays(forecastArray);
 
       }
     } catch (error) {
@@ -152,11 +145,11 @@ setForecastDays(forecastArray);
     setRegion("Tamil Nadu");
     setCountry("India");
     function updateDate() {
-  }
+    }
 
-  updateDate();
-  const timer = setInterval(updateDate, 60 * 60 * 1000);
-  return () => clearInterval(timer);
+    updateDate();
+    const timer = setInterval(updateDate, 60 * 60 * 1000);
+    return () => clearInterval(timer);
   }, []);
 
   return (
@@ -239,19 +232,19 @@ setForecastDays(forecastArray);
               <div className="today-week-main">
                 <h1>Today / Week</h1>
                 <div className="today-week-left">
-                 <div className="days-forecast">
-                  {forecastDays.length > 0 ? (
-                    forecastDays.map((day, index) => (
-                      <div className="day1" key={index}>
-                        <p>{day.name}</p>
-                        <img src={day.icon} alt={day.condition} className="w-13" />
-                        <p>{day.temp}°C</p>
-                      </div>
-                    ))
-                  ) : (
-                    <p>No forecast data available</p>
-                  )}
-                </div>
+                  <div className="days-forecast">
+                    {forecastDays.length > 0 ? (
+                      forecastDays.map((day, index) => (
+                        <div className="day1" key={index}>
+                          <p>{day.name}</p>
+                          <img src={day.icon} alt={day.condition} className="w-13" />
+                          <p>{day.temp}°C</p>
+                        </div>
+                      ))
+                    ) : (
+                      <p>No forecast data available</p>
+                    )}
+                  </div>
 
                 </div>
                 <div className="today-week-right">
@@ -289,7 +282,7 @@ setForecastDays(forecastArray);
                         <p>{cityName.name}</p>
                       </div>
                       <div className="city-1-img">
-                       <img src={cityName.icon} alt={cityName.name} />
+                        <img src={cityName.icon} alt={cityName.name} />
                       </div>
                     </div>
                   ))
