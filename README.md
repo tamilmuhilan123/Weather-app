@@ -90,4 +90,4 @@ Developed by: "Tamil Muhilan B"
 MERN Stack Developer | UI/UX Enthusiast
 
 🌐 GitHub: [tamilmuhilan123](https://github.com/tamilmuhilan123)
-📧 Email: [your-email@example.com](mailto:developertamil04@gmail.com)
+📧 Email: [developertamil@gmail.com](mailto:developertamil04@gmail.com)
